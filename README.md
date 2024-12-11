@@ -1,2 +1,10 @@
 # ARCHIMEDE
-Archimede is an autonomous solar tracking system designed to reflect sunlight onto a specific target. It uses an Arduino Nano, DC motors, IMU, and magnetometer, integrating PID control and solar position algorithms. With low-power modes and 3D-printed parts, it optimizes energy efficiency and ensures precise operation.
+Archimede is a project developed for the autonomous management of a solar tracking system based on DC motors, IMU sensors, and a magnetometer. The system is designed to reflect sunlight onto a specific target by dynamically adjusting the mirror's position on two axes (azimuth and elevation). Using an Arduino Nano microcontroller, the project integrates PID control algorithms, power-saving modes, and solar position calculation through astronomical libraries. The hardware features commercial aluminum components and custom parts made via 3D printing.
+
+Key Features:
+
+-Dynamic mirror position control.
+-Low-power mode to optimize battery usage.
+-Sensor integration for azimuth and elevation detection.
+-PID control implementation for precise motor regulation.
+-Modular and easy-to-customize system.
