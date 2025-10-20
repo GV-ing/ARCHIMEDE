@@ -9,6 +9,8 @@ class PID{
         double _e;
         double _u;
         double _e_i;
+        double _e_d;
+        double _e_prev;
         double _delta;
         double _Kp;
         double _Ki;
@@ -23,6 +25,8 @@ PID::PID(double soglia,  double Kp, double Ki, double Kd){//COSTRUTTORE implemen
   _e = 0.00;
   _u = 0.00;
   _e_i=0.00;
+  _e_d=0.00;
+  _e_prev = 0.0;
   _Kp = Kp;
   _Ki = Ki;
   _Kd = Kd;
@@ -33,7 +37,8 @@ PID::PID(double soglia,  double Kp, double Ki, double Kd){//COSTRUTTORE implemen
 double PID::signal(double X_des, double X_mis, double Sec){//COSTRUTTORE implementazione
   _e = error(X_des, X_mis);
   _e_i += _e * Sec;
-  _u = _e * _Kp + _e_i * _Ki;
+  _e_d = (_e - _e_prev) / Sec;
+  _u = _e * _Kp + _e_i * _Ki+ + _Kd * _e_d ;
   if (_u > 1) {
     _u = 1;
     _e_i -= _e * Sec;
@@ -42,6 +47,7 @@ double PID::signal(double X_des, double X_mis, double Sec){//COSTRUTTORE impleme
     _u = -1;
     _e_i -= _e * Sec;
   }
+  _e_prev = _e;
   return _u;
 }
 
